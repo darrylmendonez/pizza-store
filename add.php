@@ -38,6 +38,14 @@ $errors = array('email'=>'', 'title'=>'', 'ingredients'=>'');
       }
     }
 
+    if(array_filter($errors)) {
+      // echo 'errors in the form';
+    }
+    else {
+      // echo 'form is valid';
+      header('Location: index.php');
+    }
+
   } // end of POST check
 
 ?>
@@ -51,17 +59,17 @@ $errors = array('email'=>'', 'title'=>'', 'ingredients'=>'');
     <h4 class="center">Add a Pizza</h4>
     <form action="add.php" class="white" method="POST">
       <label>Your Email:</label>
-      <input type="text" name="email" value="<?php echo $email ?>">
+      <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
       <div class="red-text">
         <?php echo $errors['email']; ?>
       </div>
       <label>Pizza Title:</label>
-      <input type="text" name="title" value="<?php echo $title ?>">
+      <input type="text" name="title" value="<?php echo htmlspecialchars($title) ?>">
       <div class="red-text">
         <?php echo $errors['title']; ?>
       </div>
       <label>Ingredients (comma separated):</label>
-      <input type="text" name="ingredients" value="<?php echo $ingredients ?>">
+      <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
       <div class="red-text">
         <?php echo $errors['ingredients']; ?>
       </div>
